@@ -112,8 +112,31 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Center(
               child: data.isEmpty
-                  ? Text('QR харагдац', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: cs.onSurfaceVariant))
-                  : QrImageView(data: data, version: QrVersions.auto, size: 260),
+                  ? Text(
+                      'QR харагдац',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(color: cs.onSurfaceVariant),
+                    )
+                  : Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: QrImageView(
+                        data: data,
+                        version: QrVersions.auto,
+                        size: 260,
+                        backgroundColor: Colors.white,
+                        eyeStyle: const QrEyeStyle(
+                          eyeShape: QrEyeShape.square,
+                          color: Colors.black,
+                        ),
+                        dataModuleStyle: const QrDataModuleStyle(
+                          dataModuleShape: QrDataModuleShape.square,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
             ),
           ),
           Row(
@@ -121,7 +144,11 @@ class _HomePageState extends State<HomePage> {
             children: [
               OutlinedButton.icon(onPressed: () {}, icon: const Icon(Icons.save_outlined), label: const Text('Save')),
               const SizedBox(width: 8),
-              FilledButton.icon(onPressed: generate, icon: const Icon(Icons.qr_code_2), label: const Text('Дахин')),
+              FilledButton.icon(
+                onPressed: generate,
+                icon: const Icon(Icons.qr_code_2),
+                label: const Text('Дахин'),
+              ),
             ],
           ),
         ]),
