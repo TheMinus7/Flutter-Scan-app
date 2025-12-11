@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'router/app_router.dart';
 import 'theme/app_theme.dart';
+import 'ui/pages/shell_page.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const App());
+  runApp(const ScanApp());
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
+class ScanApp extends StatelessWidget {
+  const ScanApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Scan',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
-      routerConfig: appRouter,
+      themeMode: ThemeMode.system,
+      home: const ShellPage(),
     );
   }
 }
